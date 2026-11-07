@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #08080a;
+  --color-panel: #101014;
+  --color-line: #23232b;
+  --color-gold: #e8b64c;
+  --color-goldsoft: #f5d78e;
+  --color-neon: #e7f900;
+  --animate-orbit: orbit 80s linear infinite;
+  --animate-orbit-rev: orbit-rev 80s linear infinite;
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-glow: glow 5s ease-in-out infinite;
+}
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-rev {
+  to { transform: rotate(-360deg); }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+@keyframes swap {
+  0% { opacity: 0; transform: scale(0.55) rotate(-10deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: #f4f4f5;
+}
+
+:root {
+  --ring-r: 148px;
+}
+@media (min-width: 768px) {
+  :root {
+    --ring-r: 272px;
+  }
+}
+
+.ring-slot {
+  transform: rotate(var(--a)) translate(var(--ring-r));
+}
+
+.logo-swap {
+  animation: swap 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit,
+  .animate-orbit-rev,
+  .animate-marquee,
+  .animate-glow,
+  .logo-swap {
+    animation: none;
+  }
+}
