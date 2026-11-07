@@ -7,8 +7,7 @@ export type PrivacyProject = {
   featured: boolean;
 };
 
-export const X_URL = "https://x.com/PrivacyRndtable";
-export const REPO_URL = "https://github.com/CryptoSI-DAO/privacy-roundtable";
+export { X_URL, REPO_URL } from "@/config/site";
 
 /**
  * Featured projects are the series regulars seen on the roundtable banner.

@@ -21,7 +21,7 @@ export default function LogoWheel() {
 
   return (
     <div
-      className="relative mx-auto aspect-square w-[340px] md:w-[560px]"
+      className="relative mx-auto aspect-square w-[300px] md:w-[560px]"
       aria-hidden
     >
       {/* ambient glow */}
@@ -38,19 +38,19 @@ export default function LogoWheel() {
           return (
             <div
               key={p.ticker}
-              className="ring-slot absolute top-1/2 left-1/2 -mt-5 -ml-5 md:-mt-6 md:-ml-6"
+              className="ring-slot absolute top-1/2 left-1/2 -mt-4 -ml-4 md:-mt-6 md:-ml-6"
               style={{ "--a": `${angle}deg` } as React.CSSProperties}
             >
               <div style={{ transform: `rotate(${-angle}deg)` }}>
                 <div className="animate-orbit-rev">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-panel/90 shadow-[0_0_18px_rgba(0,0,0,0.55)] md:h-12 md:w-12">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line bg-panel/90 shadow-[0_0_18px_rgba(0,0,0,0.55)] md:h-12 md:w-12">
                     <Image
                       src={p.logo}
                       alt=""
                       width={44}
                       height={44}
                       loading="eager"
-                      className="h-6 w-6 object-contain md:h-7 md:w-7"
+                      className="h-5 w-5 object-contain md:h-7 md:w-7"
                     />
                   </span>
                 </div>
@@ -62,18 +62,18 @@ export default function LogoWheel() {
 
       {/* center featured logo — swaps every 3s */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="flex h-24 w-24 items-center justify-center rounded-3xl border border-gold/30 bg-panel shadow-[0_0_60px_rgba(232,182,76,0.22)] md:h-32 md:w-32">
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-gold/30 bg-panel shadow-[0_0_60px_rgba(232,182,76,0.22)] md:h-32 md:w-32">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={center.ticker}
             src={center.logo}
             alt={`${center.name} logo`}
-            className="logo-swap h-14 w-14 object-contain md:h-20 md:w-20"
+            className="logo-swap h-12 w-12 object-contain md:h-20 md:w-20"
           />
         </div>
         <div
           key={`label-${center.ticker}`}
-          className="logo-swap mt-4 text-center"
+          className="logo-swap mt-3 text-center md:mt-4"
         >
           <p className="text-sm font-bold tracking-wide text-gold md:text-base">
             {center.name}

@@ -21,15 +21,23 @@ Built with Next.js (App Router) + Tailwind CSS v4. Deployed on Vercel.
 
 ## Editing content
 
-All content lives in two files — no framework knowledge needed:
+All content lives in three files — no framework knowledge needed:
 
 | File | What's in it |
 | --- | --- |
 | [`src/data/episodes.ts`](src/data/episodes.ts) | The upcoming space + previous episodes (title, date, guests, topic, replay link) |
 | [`src/data/projects.ts`](src/data/projects.ts) | The logo roster, taglines and official URLs |
+| [`src/data/faq.ts`](src/data/faq.ts) | FAQ entries (rendered on-page *and* as schema — edit in one place only) |
 
 To add an episode: copy one record in `pastEpisodes`, fill in the fields from
 the official announcement post, and open a PR. Dates are ISO-8601 UTC.
+
+## Custom domain
+
+All absolute URLs (canonical, Open Graph, JSON-LD `@id`s, sitemap, robots,
+llms.txt) derive from `SITE_URL` in [`src/config/site.ts`](src/config/site.ts).
+When the domain arrives: change that one constant, redeploy, then add the
+domain in the Vercel dashboard and resubmit the sitemap in Search Console.
 
 ## Logos
 

@@ -41,7 +41,12 @@ body {
 }
 
 :root {
-  --ring-r: 148px;
+  --ring-r: 120px;
+}
+@media (min-width: 400px) {
+  :root {
+    --ring-r: 132px;
+  }
 }
 @media (min-width: 768px) {
   :root {

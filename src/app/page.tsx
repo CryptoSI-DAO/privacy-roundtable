@@ -4,8 +4,10 @@ import Marquee from "@/components/Marquee";
 import Episodes from "@/components/Episodes";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import Footer from "@/components/Footer";
+import SchemaGraph from "@/components/SchemaGraph";
 import { upcoming, pastEpisodes } from "@/data/episodes";
-import { X_URL } from "@/data/projects";
+import { FAQS } from "@/data/faq";
+import { X_URL } from "@/config/site";
 
 function Nav() {
   return (
@@ -25,6 +27,7 @@ function Nav() {
           <a href="#next" className="transition hover:text-gold">Next space</a>
           <a href="#episodes" className="transition hover:text-gold">Episodes</a>
           <a href="#projects" className="transition hover:text-gold">Projects</a>
+          <a href="#faq" className="transition hover:text-gold">FAQ</a>
           <a href="#about" className="transition hover:text-gold">About</a>
         </nav>
         <a
@@ -36,7 +39,55 @@ function Nav() {
           Follow on X
         </a>
       </div>
+      {/* mobile anchor chips */}
+      <nav
+        aria-label="Section shortcuts"
+        className="flex gap-2 overflow-x-auto px-4 pb-2.5 md:hidden [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {[
+          ["#next", "Next space"],
+          ["#episodes", "Episodes"],
+          ["#projects", "Projects"],
+          ["#faq", "FAQ"],
+          ["#about", "About"],
+        ].map(([href, label]) => (
+          <a
+            key={href}
+            href={href}
+            className="shrink-0 rounded-full border border-line bg-panel px-3 py-1 text-xs font-medium text-zinc-400"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
     </header>
+  );
+}
+
+function FactsStrip() {
+  const facts = [
+    { value: "Weekly-ish", label: "live spaces on X" },
+    { value: "5", label: "series regular projects" },
+    { value: "Free", label: "to join & replay" },
+    { value: "Feb 2019", label: "account on X" },
+  ];
+  return (
+    <section
+      aria-label="Privacy Roundtable at a glance"
+      className="border-y border-line/70 bg-panel/40"
+    >
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
+        {facts.map((f) => (
+          <div key={f.label} className="px-4 py-5 text-center md:py-6">
+            <p className="text-xl font-black text-gold md:text-2xl">{f.value}</p>
+            <p className="mt-1 text-[11px] tracking-wide text-zinc-500 uppercase">
+              {f.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -89,6 +140,34 @@ function NextSpace() {
   );
 }
 
+function Faq() {
+  return (
+    <section id="faq" className="border-t border-line/70">
+      <div className="mx-auto max-w-3xl px-4 py-14 md:px-6 md:py-20">
+        <p className="text-center text-xs font-bold tracking-[0.25em] text-gold uppercase">
+          FAQ
+        </p>
+        <h2 className="mt-2 text-center text-2xl font-bold md:text-3xl">
+          Frequently asked questions
+        </h2>
+        <div className="mt-8 space-y-3">
+          {FAQS.map((f) => (
+            <details
+              key={f.q}
+              className="group rounded-2xl border border-line bg-panel px-5 py-4 open:border-gold/30"
+            >
+              <summary className="cursor-pointer list-none text-sm font-bold text-zinc-100 marker:hidden md:text-base [&::-webkit-details-marker]:hidden">
+                <span className="text-gold">{f.q}</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="border-t border-line/70">
@@ -114,13 +193,16 @@ function About() {
 export default function Page() {
   return (
     <div id="top">
+      <SchemaGraph />
       <Nav />
       <main>
         <Hero />
         <Marquee />
+        <FactsStrip />
         <NextSpace />
         <Episodes episodes={pastEpisodes} />
         <ProjectsGrid />
+        <Faq />
         <About />
       </main>
       <Footer />
