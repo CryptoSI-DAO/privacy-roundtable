@@ -49,6 +49,7 @@ export default function LogoWheel() {
                       alt=""
                       width={44}
                       height={44}
+                      loading="eager"
                       className="h-6 w-6 object-contain md:h-7 md:w-7"
                     />
                   </span>

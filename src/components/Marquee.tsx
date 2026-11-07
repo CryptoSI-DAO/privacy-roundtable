@@ -21,6 +21,7 @@ export default function Marquee() {
                 alt=""
                 width={28}
                 height={28}
+                loading="eager"
                 className="h-7 w-7 object-contain"
               />
               <span className="text-sm font-semibold whitespace-nowrap text-zinc-400">

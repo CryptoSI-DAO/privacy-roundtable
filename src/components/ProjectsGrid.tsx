@@ -12,6 +12,7 @@ function Logo({ p, size }: { p: PrivacyProject; size: number }) {
         alt=""
         width={size}
         height={size}
+        loading="eager"
         className="object-contain"
         style={{ width: size * 0.55, height: size * 0.55 }}
       />
